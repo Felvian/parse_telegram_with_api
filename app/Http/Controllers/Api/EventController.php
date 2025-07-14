@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Posts;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Log;
 class EventController extends Controller
 {
     /**
@@ -16,23 +16,20 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(['status' => 'ok']);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
+ 
     public function store(Request $request): JsonResponse
     {
+        Log::info($request->all());
         $validated = $request->validate([
             'theme' => 'required|string|max:255',
-            'post' => 'required|text',
+            'post' => 'required|string',
             'date' => 'required|date_format:Y-m-d',
-            'url' => 'required|text',
-            'media' => 'required|text',
+            'url' => 'required|string',
+            'media' => 'required|string',
 
         ]);
 
@@ -43,6 +40,8 @@ class EventController extends Controller
             'message' => 'Событие успешно создано!',
             'data' => $event
         ], 201);
+           
+
     }
 
     /**
