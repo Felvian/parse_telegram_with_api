@@ -19,16 +19,7 @@ class EventController extends Controller
         return response()->json(['status' => 'ok']);
     }
 
-<<<<<<< HEAD
-    /**
-     * Store a newly created resource in storage.
-     *
 
-     */
-=======
-
- 
->>>>>>> 14aab7cae167213c06e56eb6f52a51b7f9b5738e
     public function store(Request $request): JsonResponse
     {
         Log::info($request->all());
@@ -48,7 +39,7 @@ class EventController extends Controller
             'message' => 'Событие успешно создано!',
             'data' => $event
         ], 201);
-           
+
 
     }
 
